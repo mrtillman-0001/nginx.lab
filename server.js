@@ -19,15 +19,6 @@ app.use(function(req, res, next) {
   next();
 });
 
-// http://expressjs.com/en/starter/basic-routing.html
-app.get('/', function(request, response) {
-  response.send('test');
-});
-
-app.post('/images', function(request, response) {
-  response.send('image saved');
-});
-
 app.use('/api/v1', v1);
 app.use('/api', v1);
 
