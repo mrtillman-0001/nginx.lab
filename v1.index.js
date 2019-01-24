@@ -1,6 +1,6 @@
 const route = require('express').Router();
-const images = require('./v1.images');
+const avatars = require('./v1.avatars');
 
-route.use('/images', images);
+route.use('/avatars', avatars);
 
 module.exports = route;
