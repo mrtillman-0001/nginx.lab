@@ -20,7 +20,6 @@ app.use(express.static('public'));
 app.use('/', function (req, res) {
   const nets = networkInterfaces();
   const ip = nets.eth0[0].address;
-  //const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
   res.render('index', { title: `ip ${ip}`, message: ip })
 });
 
