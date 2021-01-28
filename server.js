@@ -4,8 +4,10 @@
 // init project
 const express = require('express');
 const app = express();
-const v1 = require('./v1.index');
 const bodyParser = require('body-parser');
+const { networkInterfaces } = require('os');
+
+app.set('view engine', 'pug');
 
 app.use(bodyParser.json());
 
@@ -15,15 +17,12 @@ app.use(bodyParser.json());
 // http://expressjs.com/en/starter/static-files.html
 app.use(express.static('public'));
 
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Methods", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
+app.use('/', function (req, res) {
+  const nets = networkInterfaces();
+  const ip = nets.eth0[0].address;
+  //const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+  res.render('index', { title: `ip ${ip}`, message: ip })
 });
-
-app.use('/api/v1', v1);
-app.use('/api', v1);
 
 // listen for requests :)
 const listener = app.listen(process.env.PORT, function() {
