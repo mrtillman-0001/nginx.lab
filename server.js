@@ -24,6 +24,6 @@ app.use('/', function (req, res) {
 
 });
 
-const listener = app.listen(process.env.PORT || 8080, function() {
+const listener = app.listen(8080, function() {
   console.log('magic is happening on port ' + listener.address().port);
 });

@@ -4,12 +4,15 @@ high performance load balancer, web server, & reverse proxy
 
 ---
 
-## Resources
+[/etc/nginx/nginx.conf](https://github.com/mrtillman-0001/nginx.lab/blob/master/nginx.conf)
 
-- [How To Secure Nginx with Let's Encrypt](https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-18-04)
+```sh
+# start on boot
+$ sudo systemctl enable nginx
 
-## Usage
+# start
+$ sudo service nginx start
 
-```js
-
+# restart
+$ sudo service nginx restart
 ```
